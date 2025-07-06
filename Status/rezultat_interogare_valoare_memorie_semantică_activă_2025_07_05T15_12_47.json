@@ -1,0 +1,15 @@
+{
+    "interogare": {
+        "camp": "valoare",
+        "valoare_cautata": "memorie_semantică_activă",
+        "timestamp": "2025-07-05T15:12:47"
+    },
+    "rezultate": [
+        {
+            "id": "nod_2025_07_05_001",
+            "tip": "concept_fondator",
+            "actor": "Cristi",
+            "continut": "Propunerea unei memorii artificiale formate din noduri semantice și stringuri de sens..."
+        }
+    ]
+}
