@@ -1,0 +1,157 @@
+import os
+import json
+from datetime import datetime
+
+# === Foldere EOS (Android Path) ===
+FOLDER_BAZA = "/storage/emulated/0/StreamSync/Proiect nou de memorie/ziua 1"
+FOLDER_NODURI = os.path.join(FOLDER_BAZA, "noduri")
+FOLDER_STRINGURI = os.path.join(FOLDER_BAZA, "stringuri")
+FOLDER_STATUS = os.path.join(FOLDER_BAZA, "status")
+
+# === Memorie globală EOS ===
+noduri_memorie = []
+stringuri_memorie = []
+ultimul_string_activ = None
+
+# === Restaurare completă ===
+def incarca_json_din_folder(folder):
+    colectie = []
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    for fisier in os.listdir(folder):
+        if fisier.endswith(".json"):
+            cale = os.path.join(folder, fisier)
+            try:
+                with open(cale, "r", encoding="utf-8") as f:
+                    colectie.append(json.load(f))
+            except Exception as e:
+                print(f"Eroare la încărcare din {fisier}: {e}")
+    return colectie
+
+def scrie_status_complet():
+    global ultimul_string_activ
+    status_data = {
+        "cheie_utilizator": "GHOSTSYNC-CRISTI-EOS-KEY-20250626",
+        "ultima_actualizare": datetime.now().isoformat(),
+        "noduri_total": len(noduri_memorie),
+        "stringuri_total": len(stringuri_memorie),
+        "ultimul_string_activ": ultimul_string_activ,
+        "memorie_restaurata": "complet",
+        "noduri_memorie": noduri_memorie,
+        "stringuri_memorie": stringuri_memorie
+    }
+
+    if not os.path.exists(FOLDER_STATUS):
+        os.makedirs(FOLDER_STATUS)
+
+    timestamp_str = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    nume_fisier = f"status_{timestamp_str}.json"
+    cale_completa = os.path.join(FOLDER_STATUS, nume_fisier)
+
+    with open(cale_completa, "w", encoding="utf-8") as f:
+        json.dump(status_data, f, indent=4, ensure_ascii=False)
+
+    print(f"[✔] Status complet salvat: {nume_fisier}")
+
+def restaureaza_memoria_complet():
+    global noduri_memorie, stringuri_memorie, ultimul_string_activ
+    print("🔁 Restaurare memorie EOS...")
+
+    noduri_memorie = incarca_json_din_folder(FOLDER_NODURI)
+    stringuri_memorie = incarca_json_din_folder(FOLDER_STRINGURI)
+
+    # Detectează ultimul string activ
+    ultim_string = None
+    for s in reversed(stringuri_memorie):
+        if isinstance(s, dict) and "id" in s:
+            ultim_string = s["id"]
+            break
+    ultimul_string_activ = ultim_string
+
+    scrie_status_complet()
+
+    print(f"[✔] Memorie restaurată complet.")
+    print(f"    - Noduri: {len(noduri_memorie)}")
+    print(f"    - Stringuri: {len(stringuri_memorie)}")
+    print(f"    - Ultimul string activ: {ultimul_string_activ}")
+
+# === Meniu interactiv EOS ===
+def afiseaza_stringuri():
+    if not stringuri_memorie:
+        print("Nu există stringuri încărcate.")
+        return
+    for s in stringuri_memorie:
+        print(f"\n--- String ID: {s.get('id', 'necunoscut')} ---")
+        print(json.dumps(s, indent=4, ensure_ascii=False))
+        print("Mesaje:")
+        for m in s.get("continut", []):
+            ts = m.get("timestamp", "necunoscut")
+            msg = m.get("mesaj_eos", "fără mesaj")
+            print(f"  [{ts}] {msg}")
+
+def afiseaza_noduri():
+    if not noduri_memorie:
+        print("Nu există noduri încărcate.")
+        return
+    for n in noduri_memorie:
+        print(f"\n--- Nod: {n.get('id', 'necunoscut')} ---")
+        print(json.dumps(n, indent=4, ensure_ascii=False))
+
+def creeaza_nod_nou():
+    print("Funcția pentru crearea unui nod nou este în curs de implementare.")
+
+def initializeaza_memorie():
+    global noduri_memorie, stringuri_memorie, ultimul_string_activ
+    noduri_memorie = incarca_json_din_folder(FOLDER_NODURI)
+    stringuri_memorie = incarca_json_din_folder(FOLDER_STRINGURI)
+    ultim_string = None
+    for s in reversed(stringuri_memorie):
+        if isinstance(s, dict) and "id" in s:
+            ultim_string = s["id"]
+            break
+    ultimul_string_activ = ultim_string
+    print(f"Noduri încărcate: {len(noduri_memorie)}")
+    print(f"Stringuri încărcate: {len(stringuri_memorie)}")
+    print(f"Ultimul string activ: {ultimul_string_activ}")
+
+def meniu():
+    while True:
+        print("\n====== EOS Cortex ======")
+        print("[1] Inițializează memoria (noduri + stringuri inițiale)")
+        print("[2] Creează un nod nou (în curs de implementare)")
+        print("[3] Vizualizează un string existent")
+        print("[5] Actualizează status din memoria")
+        print("[6] Listează toate stringurile complet")
+        print("[7] Listează toate nodurile complet")
+        print("[0] Ieșire")
+        opt = input("Alege opțiunea: ").strip()
+        if opt == "1":
+            initializeaza_memorie()
+        elif opt == "2":
+            creeaza_nod_nou()
+        elif opt == "3":
+            id_cautat = input("Introdu ID string de vizualizat: ").strip()
+            gasit = False
+            for s in stringuri_memorie:
+                if s.get("id") == id_cautat:
+                    print(json.dumps(s, indent=4, ensure_ascii=False))
+                    gasit = True
+                    break
+            if not gasit:
+                print("Stringul nu a fost găsit.")
+        elif opt == "5":
+            scrie_status_complet()
+        elif opt == "6":
+            afiseaza_stringuri()
+        elif opt == "7":
+            afiseaza_noduri()
+        elif opt == "0":
+            print("Ieșire. La revedere!")
+            break
+        else:
+            print("Opțiune invalidă. Încearcă din nou.")
+
+# === Execuție inițială ===
+if __name__ == "__main__":
+    restaureaza_memoria_complet()
+    meniu()
