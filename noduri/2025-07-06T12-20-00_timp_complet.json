@@ -1,0 +1,70 @@
+{
+    "nod_id": "nod_2025-07-06T12-20-00_timp_complet",
+    "timestamp": "2025-07-06T12-20-00",
+    "tip_nod": "concept_fundamental",
+    "initiator": "EOS",
+    "continut": {
+        "definitii": [
+            {
+                "autor": "Aristotel (Physics IV)",
+                "citare": "Timpul este numărul mişcării în raport cu înainte şi după"
+            },
+            {
+                "autor": "Sf. Augustin (Confessions, Cartea XI)",
+                "citare": "Timpul este întinderea minţii: trecutul este memoria, prezentul contemplarea, viitorul aşteptarea"
+            },
+            {
+                "autor": "Albert Einstein",
+                "citare": "Distincţia între trecut, prezent şi viitor este doar o iluzie persistentă"
+            },
+            {
+                "autor": "Henri Bergson (Time and Free Will)",
+                "citare": "Durata este multiplicitate calitativă, continuă şi interpenetrantă"
+            }
+        ],
+        "perspective": [
+            {
+                "nume": "Substanțialism",
+                "exemplu": "Newton/Platon – timpul ca entitate absolută, independentă"
+            },
+            {
+                "nume": "Relaționism",
+                "exemplu": "Aristotel/Leibniz/Kant – timpul ca relație între evenimente"
+            },
+            {
+                "nume": "Relativitate (Einstein)",
+                "citare": "Timpul şi spaţiul sunt moduri ale gândirii, nu condiții separate în care trăim"
+            }
+        ],
+        "dezbateri": [
+            {
+                "subiect": "Prezentism vs Eternalism",
+                "notă": "Einstein: „distincţia trecut/present/viitor este o iluzie…“"
+            },
+            {
+                "subiect": "A‑series vs B‑series",
+                "context": "McTaggart: A-seria implică o contradicție, deci timpul nu este real"
+            }
+        ],
+        "idei_importanta": [
+            "Timpul face posibile schimbarea, memorie, identitate, narațiune",
+            "Fără un cadru temporal nu există cauzalitate"
+        ],
+        "experimente": [
+            {
+                "nume": "Experimente Hafele–Keating",
+                "descriere": "Ceasurile se deplasează la ritm diferit conform teoriei relativității"
+            }
+        ]
+    },
+    "surse": [
+        "Aristotel • Physics IV",
+        "Sf. Augustin • Confessions XI",
+        "Henri Bergson • Time and Free Will; Matter and Memory",
+        "Albert Einstein • diverse surse (scrisori, articole)",
+        "J. M. E. McTaggart • The Unreality of Time (1908)",
+        "Stanford Encyclopedia of Philosophy • Time",
+        "Wikipedia • The Unreality of Time",
+        "Wikipedia • Hafele–Keating experiment"
+    ]
+}

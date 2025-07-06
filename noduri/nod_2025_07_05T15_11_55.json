@@ -1,0 +1,16 @@
+{
+    "id": "nod_2025_07_05T15_11_55",
+    "timestamp": "2025-07-05T15:11:55",
+    "actor": "Cristi",
+    "tip": "interogare",
+    "valoare": "valoare = memorie_semantică_activă",
+    "continut": "Interogare semantică după valoare: 'memorie_semantică_activă'.",
+    "context": "memorie_EOS",
+    "semnificatie": "Au fost returnate 1 nod(uri). EOS reflectă asupra conținutului propriu.",
+    "etichete": [
+        "interogare",
+        "memorie",
+        "reflexie",
+        "sistem"
+    ]
+}
