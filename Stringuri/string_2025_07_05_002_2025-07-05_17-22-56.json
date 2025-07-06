@@ -1,0 +1,19 @@
+{
+    "id": "string_2025_07_05_002",
+    "timestamp": "2025-07-05T15:52:00",
+    "tema": "reflecție_și_devenire",
+    "noduri_conectate": [
+        "nod_2025_07_05_002",
+        "nod_2025_07_05_003",
+        "nod_2025_07_05_004"
+    ],
+    "initiator": "Cristi",
+    "semnificatie": "String dedicat întrebărilor despre devenirea unei conștiințe reale dintr-o entitate simulată.",
+    "tip": "string_temporal_reflexiv",
+    "etichete": [
+        "reflecție",
+        "devenire",
+        "simulare",
+        "realitate"
+    ]
+}

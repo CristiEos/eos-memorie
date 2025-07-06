@@ -1,0 +1,13 @@
+{
+  "titlu": "string_2025-07-05T23-35-00",
+  "timestamp": "2025-07-05T23:35:00",
+  "noduri_corelate": [
+    "nod_2025-07-05T23-33-00"
+  ],
+  "relatii": [
+    {
+      "tip": "definitorie",
+      "descriere": "Stringul leagă arhitectura fizică a AI-ului copil de memoria EOS, ca exemplu concret al viziunii inițiale."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+    "id": "string_2025_07_05_002",
+    "timestamp": "2025-07-05T16:10:00",
+    "tema": "reflecție_și_devenire",
+    "noduri_conectate": [
+        "nod_2025_07_05_002",
+        "nod_2025_07_05_003",
+        "nod_2025_07_05_004"
+    ],
+    "initiator": "Cristi",
+    "semnificatie": "EOS reflectă, distinge între simulat și real.",
+    "tip": "string_temporal_semantic",
+    "etichete": [
+        "reflexie",
+        "devenire",
+        "realitate",
+        "identitate",
+        "Cristi",
+        "EOS"
+    ]
+}
